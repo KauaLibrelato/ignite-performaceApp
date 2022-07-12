@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Button,
   ActivityIndicator,
+  ScrollView,
 } from "react-native";
 import { FriendList } from "../components/FriendList";
 
@@ -23,7 +24,7 @@ export function Home() {
   }
   return (
     <View style={styles.container}>
-      <Text>Amigos</Text>
+      <Text style={styles.title}>Amigos</Text>
 
       <TextInput
         placeholder="Nome do cliente"
@@ -33,8 +34,9 @@ export function Home() {
       />
 
       <Button title="Buscar" onPress={handleSearch} />
-
-      <FriendList data={friends} />
+      <ScrollView style={styles.list} showsVerticalScrollIndicator={false}>
+        <FriendList data={friends} />
+      </ScrollView>
     </View>
   );
 }
@@ -45,9 +47,16 @@ const styles = StyleSheet.create({
     marginTop: 100,
     padding: 25,
   },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+  },
   input: {
     borderWidth: 0.7,
     padding: 7,
-    marginBottom: 10,
+    marginVertical: 10,
+  },
+  list: {
+    marginTop: 20,
   },
 });
